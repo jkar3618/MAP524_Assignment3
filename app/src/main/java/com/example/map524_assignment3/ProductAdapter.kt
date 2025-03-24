@@ -7,8 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductAdapter(private val productList: List<Product>) :
-    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(
+    private val productList: List<Product>,
+    private val onItemClick: (Product) -> Unit // 클릭 리스너 추가
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productImage: ImageView = view.findViewById(R.id.product_image)
@@ -27,6 +29,11 @@ class ProductAdapter(private val productList: List<Product>) :
         holder.productImage.setImageResource(product.imageId)
         holder.productTitle.text = product.title
         holder.productDescription.text = product.desc
+
+        // 클릭 이벤트 연결
+        holder.itemView.setOnClickListener {
+            onItemClick(product)
+        }
     }
 
     override fun getItemCount(): Int = productList.size

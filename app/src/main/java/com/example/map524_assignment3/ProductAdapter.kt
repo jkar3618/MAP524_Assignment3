@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ProductAdapter(
     private val productList: List<Product>,
-    private val onItemClick: (Product) -> Unit // 클릭 리스너 추가
+    private val onItemClick: (Product) -> Unit
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,9 +28,7 @@ class ProductAdapter(
         val product = productList[position]
         holder.productImage.setImageResource(product.imageId)
         holder.productTitle.text = product.title
-        holder.productDescription.text = product.desc
 
-        // 클릭 이벤트 연결
         holder.itemView.setOnClickListener {
             onItemClick(product)
         }

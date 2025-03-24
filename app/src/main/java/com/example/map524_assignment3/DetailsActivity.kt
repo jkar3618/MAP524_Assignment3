@@ -15,9 +15,9 @@ class DetailsActivity : AppCompatActivity() {
         val productTitle: TextView = findViewById(R.id.product_title)
         val productDescription: TextView = findViewById(R.id.product_description)
 
-        val imageRes = intent.getIntExtra("product image", 0)
-        val title = intent.getStringExtra("product title")
-        val description = intent.getStringExtra("product description")
+        val imageRes = intent.getIntExtra("product_image", 0)
+        val title = intent.getStringExtra("product_title")
+        val description = intent.getStringExtra("product_description")
 
         productImage.setImageResource(imageRes)
         productTitle.text = title
